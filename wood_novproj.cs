@@ -10,7 +10,7 @@ namespace NovemberProjekt_Sebastian_Wood
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("kalle");
+            Console.WriteLine("kalle djsgeojpsewåosdgijsejgsjoiagejogesskmdg'omphrmg");
 
         }
     }
