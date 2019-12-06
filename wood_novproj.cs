@@ -12,61 +12,49 @@ namespace NovemberProjekt_Sebastian_Wood
     {
         static void Main(string[] args)
         {
+            Fighter fighter3 = new Fighter(); //skapar från klass fighter vid namn fighter3.  
 
-            Fighter fighter3 = new Fighter();
+            Console.WriteLine(fighter3.TaNamn()); //tar TaNamn från Fighter klassen från metoden TaNamn.
 
-            fighter3.namePokemon = "wood";  //metoder inom klasser
+            Console.ReadLine(); //pausar programmet så att man måste trycka sig vidare. 
 
-            string names = fighter3.TaNamn(); //tar TaNamn från 
+            string names = fighter3.TaNamn() + " TE17A"; //skapar en string vid namn names som tar från TaNamn metoden från fighter samt inkluderar TE17A
 
-            Console.WriteLine(names);
+            Console.WriteLine(names); //skriver ut stringen som skrevs ovan. 
 
             Console.ReadLine();
-
             
-
-            Pokemon namn = new Pokemon();
-
-            
+            fighter3.namePokemon = "wood";  //med hjälp av arv (subklass) innehåller fighter namePokemon vilket gör att information från pokemon har skapats och kan användas i main.
 
             Console.WriteLine(fighter3.namePokemon);
 
             Console.ReadLine();
-            
+
+            Pokemon namn = new Pokemon(); 
+
 
             RestClient client = new RestClient("https://pokeapi.co/api/v2/"); //själva klienten alltså hemsidan där genom api all information hämtas.
 
             RestRequest request = new RestRequest("pokemon/bulbasaur"); //requestar information genom api från denna karaktär som skrivs
-
             
-
             IRestResponse response = client.Get(request); //innebär att man använder klienten för att hämta (get) själva requesten genom RestClient ovan
-
-           
+            
             Pokemon pokemon = JsonConvert.DeserializeObject<Pokemon>(response.Content); //innebär att man utgår från klassen Pokemon och skapar en instans av klassen. Hämtar då nödvändig information från api genom klassen.
-
-
-
 
             Console.WriteLine(pokemon.name + " valdes!");
 
             Console.WriteLine("Nu, skriv in en Pokemon karaktär!");
             //string namn = Console.ReadLine();
-            Console.ReadLine();
-
+            
             RestRequest request2 = new RestRequest(/*"pokemon/namn"*/); //här kan användaren requesta vilken pokemon den vill utifrån api databasen. 
-
-
-
+            
             IRestResponse response2 = client.Get(request2); //innebär att man använder klienten för att hämta (get) själva requesten genom RestClient ovan
-
-
-            Pokemon spelare = JsonConvert.DeserializeObject<Pokemon>(response2.Content); //innebär att man utgår från klassen Pokemon och skapar en instans av klassen. Hämtar då nödvändig information från api genom klassen.
+            
+            Fighter spelare = JsonConvert.DeserializeObject<Fighter>(response2.Content); //innebär att man utgår från klassen Pokemon och skapar en instans av klassen. Hämtar då nödvändig information från api genom klassen.
 
             Console.WriteLine("Du valde: " + spelare.name);
             Console.ReadLine();
-
-
+            
             //gör att arenan är en klass. 
 
             Random generator = new Random();
@@ -75,30 +63,23 @@ namespace NovemberProjekt_Sebastian_Wood
 
             //presentera fighter och skriv in klassen person här. 
 
-
-            Fighter fighter = new Fighter();
-
-
-
-            Console.WriteLine("Skriv in namn på din fighter: ");
-
+            Fighter fighter = new Fighter(); //skapar fighter från klass Fighter
             
-            {
-                fighter.namn = Console.ReadLine();
+            
+            Console.WriteLine(fighter.namn); //tilltalar att man ska skriva in namn på sin fighter.
 
+            {
+                fighter.namn = Console.ReadLine(); //här får man skriva in namn på sin fighter. Eftersom att fighter klass redan har namn tillgivit kan jag ta namn stringen därifrån
             };
 
-            Console.WriteLine("" + fighter.namn + "!");
-
-
-
-            Console.WriteLine(fighter.namn + " aka " + pokemon.name + "!");
+            Console.WriteLine("" + fighter.namn + "!"); //skriver ut namnet. 
             
+            Console.WriteLine(fighter.namn + " aka " + pokemon.name + "!"); //inkluderar även från klassen pokemon.name som användes längre upp
+            
+            Console.WriteLine("Nu börjar fighten! ");
+
 
             Console.ReadLine();
-
-
-            Console.WriteLine("Nu börjar fighten! ");
 
 
 
