@@ -32,7 +32,6 @@ namespace NovemberProjekt_Sebastian_Wood
 
             Pokemon namn = new Pokemon(); 
 
-
             RestClient client = new RestClient("https://pokeapi.co/api/v2/"); //själva klienten alltså hemsidan där genom api all information hämtas.
 
             RestRequest request = new RestRequest("pokemon/bulbasaur"); //requestar information genom api från denna karaktär som skrivs
@@ -75,14 +74,7 @@ namespace NovemberProjekt_Sebastian_Wood
             Console.WriteLine(fighter.GetLand()); //skriver ut landet som angavs i pokemon genom klassen fighter med hjälp av ARV. 
 
             Console.ReadLine();
-
-
             
-
-
-
-
-
         }
     }
 }
