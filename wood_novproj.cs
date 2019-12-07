@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp; //är bibloteket för requesten i koden. 
-using Newtonsoft.Json; //omvandlar JSON kod (javascript objekt notering) till csharp kod.
+using Newtonsoft.Json; //omvandlar JSON kod (javascript objekt notering) till csharp kod. V
 
 namespace NovemberProjekt_Sebastian_Wood
 {
@@ -26,7 +26,7 @@ namespace NovemberProjekt_Sebastian_Wood
             
             fighter3.namePokemon = "wood";  //med hjälp av arv (subklass) innehåller fighter namePokemon vilket gör att information från pokemon har skapats och kan användas i main.
 
-            Console.WriteLine(fighter3.namePokemon);
+            Console.WriteLine(fighter3.namePokemon); //skriver ut namePokemon genom fighter som skapades vid namn fighter3
 
             Console.ReadLine();
 
@@ -46,28 +46,22 @@ namespace NovemberProjekt_Sebastian_Wood
             Console.WriteLine("Nu, skriv in en Pokemon karaktär!");
             //string namn = Console.ReadLine();
             
-            RestRequest request2 = new RestRequest(/*"pokemon/namn"*/); //här kan användaren requesta vilken pokemon den vill utifrån api databasen. 
+            RestRequest request2 = new RestRequest(/*"pokemon/namn"*/); //här kan användaren requesta vilken pokemon den vill utifrån api databasen. Fick den inte fungera på grund av att programmet krashade och hade inte tid att fixa det. Men har det kvar som referens till framtiden.
             
-            IRestResponse response2 = client.Get(request2); //innebär att man använder klienten för att hämta (get) själva requesten genom RestClient ovan
+            IRestResponse response2 = client.Get(request2); //innebär att man använder klienten för att hämta (get) själva requesten genom RestClient ovan med länken pokeapi
             
             Fighter spelare = JsonConvert.DeserializeObject<Fighter>(response2.Content); //innebär att man utgår från klassen Pokemon och skapar en instans av klassen. Hämtar då nödvändig information från api genom klassen.
 
-            Console.WriteLine("Du valde: " + spelare.name);
+            Console.WriteLine("Du valde: " + spelare.name); //tilltalas från fighter Spelare om vad som skevs in. Men eftersom jag inte fick det att fungera eller skriver in nån request så kommer ingen pokemon att väljas
             Console.ReadLine();
             
-            //gör att arenan är en klass. 
+            Random generator = new Random(); //random generator som gör att slumpmässiga tal skapas med hjälp av tidsmässigt värde.
 
-            Random generator = new Random();
+            int damage = generator.Next(0, 5); //skapar en int vid namn damage som slumpar tal mellan 0 till 5 med hjälp av random generator
 
-            int damage = generator.Next(0, 5);
-
-            //presentera fighter och skriv in klassen person här. 
-
-            Fighter fighter = new Fighter(); //skapar fighter från klass Fighter
-            
+            Fighter fighter = new Fighter(); //skapar en till fighter från klass Fighter
             
             Console.WriteLine(fighter.namn); //tilltalar att man ska skriva in namn på sin fighter.
-
             {
                 fighter.namn = Console.ReadLine(); //här får man skriva in namn på sin fighter. Eftersom att fighter klass redan har namn tillgivit kan jag ta namn stringen därifrån
             };
@@ -78,11 +72,12 @@ namespace NovemberProjekt_Sebastian_Wood
             
             Console.WriteLine("Nu börjar fighten! ");
 
+            Console.WriteLine(fighter.GetLand()); //skriver ut landet som angavs i pokemon genom klassen fighter med hjälp av ARV. 
 
             Console.ReadLine();
 
 
-
+            
 
 
 
